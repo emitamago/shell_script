@@ -35,8 +35,8 @@ prompt.get({
 
         var time = Date.now()
         let hash = createHash(sampleCommit)
-        let i = 0
-        while (hash.substring(0, 4) !== "0000") {
+        
+        while (!hash.startsWith("0000", 0)) {
             time++
             var commit =
                 'tree ' + shellVariables["tree"] +
