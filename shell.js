@@ -43,6 +43,7 @@ var correctCommit =
 
 shellVariables["correctHash"] = shell.echo('-en', correctCommit).exec('git hash-object -t commit -w --stdin')
 shell.exec(`git reset --hard ${shellVariables["correctHash"]}`)
+shell.exec('git push origin master')
 
 
 // create hash using sha1
