@@ -54,11 +54,10 @@ prompt.get({
                 'committer ' + committer + ' ' + time + ' +0500' + '\n' +
                 '\n' + shellVariables["message"];
             var correctCommitMessage = `commit    ${correctCommit.length}${correctCommit}`
-            console.log("correct message is", correctCommitMessage)
-            console.log("hash is", createHash(correctCommitMessage))
-
-
-
+            // console.log("correct message is", correctCommitMessage)
+            // console.log("hash is", createHash(correctCommitMessage))
+        shellVariables["correctHash"] = shell.echo('-en', correctCommit).exec('git hash-object -t commit -w --stdin')
+        shell.exec(`git reset --hard ${shellVariables["correctHash"]}`)
 
         // increment time by 1 until resulting hash has difficulty number of zero
         // while(hash.substring(0, 6) !== "000000"){
