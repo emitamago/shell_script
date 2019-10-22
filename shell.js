@@ -45,11 +45,17 @@ prompt.get({
                 'committer ' + committer + ' ' + time + ' +0500' + '\n' +
                 '\n' + shellVariables["message"];
             var commitMessage2 = `commit    ${commit.length}${commit}`
-            hash = createHash(commitMessage2)
-            i++
-            
+            hash = createHash(commitMessage2)  
         }
-        console.log(hash, time)
+        var correctCommit =
+                'tree ' + shellVariables["tree"] +
+                'parent ' + shellVariables["parentTree"] +
+                'author ' + committer + ' ' + time + ' +0500' + '\n' +
+                'committer ' + committer + ' ' + time + ' +0500' + '\n' +
+                '\n' + shellVariables["message"];
+            var correctCommitMessage = `commit    ${correctCommit.length}${correctCommit}`
+            console.log("correct message is", correctCommitMessage)
+            console.log("hash is", createHash(correctCommitMessage))
 
 
 
